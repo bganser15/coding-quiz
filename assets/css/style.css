@@ -5,27 +5,61 @@
   margin: 200px auto auto auto;
   border-radius: 10px;
   box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.timer {
+  background-color: white;
+  padding: 10px;
+  position: relative;
+  float: right;
+  margin-top: 5px;
+  margin-right: 5px;
+  border-radius: 10px;
+  text-align: center;
+}
+.start-game-text {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
 }
-
-.quiz-box h1 {
+.start-game-text h1 {
   padding: 5px;
   font-size: 40px;
   text-align: center;
 }
 
-.quiz-box h2 {
+.start-game-text h2 {
   text-align: center;
   font-size: 24px;
 }
 
+.quiz-buttons {
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin-top: 50px;
+}
 .start-quiz,
 .view-highscore {
-  text-align: center;
-  padding: 3px;
+  padding: 5px;
   border-radius: 10px;
-  color: ;
+}
+
+.questionHeader {
+  text-align: center;
+}
+
+.choices {
+  padding: 10px;
+  background-color: navy;
+  color: white;
   margin: 10px;
+  border-radius: 10px;
+}
+
+.choices:hover {
+  background-color: rebeccapurple;
 }
