@@ -1,3 +1,5 @@
+//DOM Elements
+
 startButtonEl = document.querySelector(".start-quiz");
 quizAreaEl = document.querySelector(".quiz-box");
 startGameTextEl = document.querySelector(".start-game-text");
@@ -10,15 +12,17 @@ questionHeaderEl = document.querySelector(".questionHeader");
 questionEl = document.querySelector(".questionFormat");
 
 timerBoxEl = document.querySelector(".timerBox");
-answerButtonEl = document.querySelector(".choices");
 
 //answerbuttons
 buttonAEl = document.getElementById("A");
 buttonBEl = document.getElementById("B");
 buttonCEl = document.getElementById("C");
 buttonDEl = document.getElementById("D");
+
+//timer and score
 var timer = "60";
 var score = "0";
+
 //questions and answers
 var questionNumber = [
   "Question 1",
@@ -104,6 +108,8 @@ var timerCount = function () {
     clearInterval(timeInterval);
   }
 };
+
+//displays questions and answers according to the array
 var setQuestion1 = function () {
   buttonAEl.createTextNode = aAnswer[0];
   buttonBEl.textContent = bAnswer[0];
@@ -147,6 +153,7 @@ var checkQuestion1 = function (event) {
   }
 };
 
+//sets questions and style for question 2n
 var setQuestion2 = function () {
   questionHeaderEl.textContent = questionNumber[1];
   questionEl.textContent = question[1];
@@ -162,5 +169,4 @@ var setQuestion2 = function () {
 
 //event listener on start quiz button
 startButtonEl.addEventListener("click", startQuiz);
-//startButtonEl.addEventListener("click", startQuestions);
 quizContainerEl.addEventListener("click", checkQuestion1);

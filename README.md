@@ -11,3 +11,7 @@
 -The game is over when the user reaches the end of the question or runs out of time.
 
 -When the game is over, the user is asked if they would like to play again or view high scores.
+
+This site was built using [GitHub Pages](https://bganser15.github.io/password-generator/).
+
+![Password generator preview of page](/passwordGenerator.png)
