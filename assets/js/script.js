@@ -2,7 +2,24 @@ startButtonEl = document.querySelector(".start-quiz");
 quizAreaEl = document.querySelector(".quiz-box");
 startGameTextEl = document.querySelector(".start-game-text");
 quizButtonEl = document.querySelector(".quiz-buttons");
-var timer = "61";
+//sets quiz header and questions display to none
+quizContainerEl = document.querySelector(".quiz-container");
+quizContainerEl.style.display = "none";
+//defines question header and question
+questionHeaderEl = document.querySelector(".questionHeader");
+questionEl = document.querySelector(".questionFormat");
+
+timerBoxEl = document.querySelector(".timerBox");
+answerButtonEl = document.querySelector(".choices");
+
+//answerbuttons
+buttonAEl = document.getElementById("A");
+buttonBEl = document.getElementById("B");
+buttonCEl = document.getElementById("C");
+buttonDEl = document.getElementById("D");
+var timer = "60";
+var score = "0";
+//questions and answers
 var questionNumber = [
   "Question 1",
   "Question 2",
@@ -57,86 +74,93 @@ var dAnswer = [
   "d. To set a timer",
 ];
 
-//function to start quiz
+//function to start quiz (remove intro page, display first question and start timer)
 var startQuiz = function () {
   console.log("quiz started");
   startGameTextEl.remove();
   quizButtonEl.remove();
-  //setTimeout();
+  quizContainerEl.style.display = "block";
+  questionHeaderEl.textContent = questionNumber[0];
+  questionEl.textContent = question[0];
+  buttonAEl.textContent = aAnswer[0];
+  buttonBEl.textContent = bAnswer[0];
+  buttonCEl.textContent = cAnswer[0];
+  buttonDEl.textContent = dAnswer[0];
+  //start timer
   startTimer();
 };
 
-/* //function to start timer
-var startTimer = function (timeInterval) {
-  //sets time interval
-  timeInterval = setInterval(startTimer, 1000);
-  //adds timer to screen
-  timerBoxEl = quizAreaEl.innerHTML =
-    "<span class='timer'>" + timer + "</span>";
-  timer--;
-  //stops timer at 0
-  if (timer < 0) {
-    clearInterval(timeInterval);
-  }
-  //displays timer on screen
-  timerBoxEl.textContent = timer;
-}; */
-// function startTimer() {
-//   timerBoxEl = quizAreaEl.innerHTML =
-//     "<span class='timer'>" + timer + "</span>";
-//   timeInterval = setInterval(function () {
-//     timer--;
-//     //displays timer on screen
-//     timerBoxEl.textContent = timer;
-//     if (timer < 0) {
-//       clearInterval(timeInterval);
-//     }
-//   }, 1000);
-//   return timer;
-// }
-
-var startQuestions = function () {
-  questionHeader = document.createElement("h3");
-  questionHeader.className = "questionHeader";
-  questionHeader.textContent = questionNumber[0];
-  questionText = document.createElement("div");
-  questionText.className = "questionFormat";
-  questionText.textContent = question[0];
-  questionAnswerA = document.createElement("div");
-  questionAnswerA.className = "choices";
-  questionAnswerA.textContent = aAnswer[0];
-  questionAnswerB = document.createElement("div");
-  questionAnswerB.className = "choices";
-  questionAnswerB.textContent = bAnswer[0];
-  questionAnswerC = document.createElement("div");
-  questionAnswerC.className = "choices";
-  questionAnswerC.textContent = cAnswer[0];
-  questionAnswerD = document.createElement("div");
-  questionAnswerD.className = "choices";
-  questionAnswerD.textContent = dAnswer[0];
-
-  quizAreaEl.appendChild(questionHeader);
-  quizAreaEl.appendChild(questionText);
-  quizAreaEl.appendChild(questionAnswerA);
-  quizAreaEl.appendChild(questionAnswerB);
-  quizAreaEl.appendChild(questionAnswerC);
-  quizAreaEl.appendChild(questionAnswerD);
-};
+//sets timer interval
 var startTimer = function () {
   timeInterval = setInterval(timerCount, 1000);
 };
-
+//adds timer to pge
 var timerCount = function () {
-  timerBoxEl = quizAreaEl.innerHTML =
-    "<span class='timer'>" + timer + "</span>";
-  timer--;
   //displays timer on screen
   timerBoxEl.textContent = timer;
+
+  timer--;
   if (timer < 0) {
     clearInterval(timeInterval);
   }
+};
+var setQuestion1 = function () {
+  buttonAEl.createTextNode = aAnswer[0];
+  buttonBEl.textContent = bAnswer[0];
+  buttonCEl.textContent = cAnswer[0];
+  buttonDEl.textContent = dAnswer[0];
+};
+//function to check correct answer on question 1
+var checkQuestion1 = function (event) {
+  targetButton = event.target;
+  //if correct
+  if (targetButton.matches("#C")) {
+    console.log("correct");
+    buttonCEl.style.backgroundColor = "green";
+    score++;
+    console.log(score);
+
+    //if wrong
+  } else if (targetButton.matches("#A")) {
+    buttonCEl.style.backgroundColor = "green";
+    buttonAEl.style.backgroundColor = "red";
+    buttonBEl.style.backgroundColor = "red";
+    buttonDEl.style.backgroundColor = "red";
+    console.log("not c");
+    timer -= 5;
+    console.log(timer);
+  } else if (targetButton.matches("#B")) {
+    buttonCEl.style.backgroundColor = "green";
+    buttonAEl.style.backgroundColor = "red";
+    buttonBEl.style.backgroundColor = "red";
+    buttonDEl.style.backgroundColor = "red";
+    console.log("not c");
+    timer -= 5;
+  } else if (targetButton.matches("#D")) {
+    buttonCEl.style.backgroundColor = "green";
+    buttonAEl.style.backgroundColor = "red";
+    buttonBEl.style.backgroundColor = "red";
+    buttonDEl.style.backgroundColor = "red";
+    console.log("not c");
+    timer -= 5;
+    console.log(timer);
+  }
+};
+
+var setQuestion2 = function () {
+  questionHeaderEl.textContent = questionNumber[1];
+  questionEl.textContent = question[1];
+  buttonAEl.textContent = aAnswer[1];
+  buttonBEl.textContent = bAnswer[1];
+  buttonCEl.textContent = cAnswer[1];
+  buttonDEl.textContent = dAnswer[1];
+  buttonCEl.style.backgroundColor = "";
+  buttonAEl.style.backgroundColor = "";
+  buttonBEl.style.backgroundColor = "";
+  buttonDEl.style.backgroundColor = "";
 };
 
 //event listener on start quiz button
 startButtonEl.addEventListener("click", startQuiz);
-startButtonEl.addEventListener("click", startQuestions);
+//startButtonEl.addEventListener("click", startQuestions);
+quizContainerEl.addEventListener("click", checkQuestion1);
