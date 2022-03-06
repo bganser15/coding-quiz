@@ -12,6 +12,6 @@
 
 -When the game is over, the user is asked if they would like to play again or view high scores.
 
-This site was built using [GitHub Pages](https://bganser15.github.io/password-generator/).
+This site was built using [GitHub Pages](https://bganser15.github.io/coding-quiz/).
 
-![Password generator preview of page](/passwordGenerator.png)
+![Password generator preview of page](/assets/images/javascriptQuiz.png)
